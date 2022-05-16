@@ -1,0 +1,26 @@
+@font-face {
+    font-family: 'mlb';
+    src: url('../fonts/Muli-Black.woff2') format('woff2'),
+        url('../fonts/Muli-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: fallback;
+}
+
+@font-face {
+    font-family: 'pdb';
+    src: url('../fonts/PlayfairDisplay-Black.woff2') format('woff2'),
+        url('../fonts/PlayfairDisplay-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: fallback;
+}
+
+@font-face {
+    font-family: 'mll';
+    src: url('../fonts/Muli-Light.woff2') format('woff2'),
+        url('../fonts/Muli-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: fallback;
+}

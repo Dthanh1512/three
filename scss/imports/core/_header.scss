@@ -1,0 +1,193 @@
+// css header
+header {
+    width: 100%;
+    height: var(--heightHeader);
+    max-width: $container-max-width;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    @include transform(translateX(-50%));
+    @include transition($t);
+    z-index: 200;
+    &.active {
+        background: #000;
+        opacity: 1;
+        --heightHeader: 90px;
+        height: var(--heightHeader);
+        @include transition($t);
+        .logo {
+            a {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                img {
+                    width: 40px;
+                    height: 40px;
+                }
+                .logo-text {
+                    font-size: 13px;
+                }
+            }
+        }
+        .menu {
+            li {
+                a {
+                    &:after {
+                        bottom: 30px;
+                    }
+                }
+            }
+        }
+        @include xs {
+            --heightHeader: 50px;
+            height: var(--heightHeader);
+        }
+    }
+    .container {
+        height: 100%;
+        margin-top: 50px;
+    }
+    .container-fluid {
+        height: 100%;
+    }
+    .logo {
+        height: 100%;
+        margin: 0 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        a {
+            img {
+                width: 50px;
+                height: 50px;
+            }
+        }
+        &-text {
+            text-align: center;
+            font-family: dpb;
+            font-size: 16px;
+            line-height: 24px;
+            text-transform: uppercase;
+            color: $white-cl;
+        }
+    }
+    .menu {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        li {
+            height: 100%;
+            a {
+                height: 100%;
+                @include mid(true);
+                @include text(10px,mlb,23px, $white-cl, uppercase);
+                margin: 0 25px;
+                letter-spacing: 4px;
+                overflow: hidden;
+                position: relative;
+                @include transition($t);
+                &:after {
+                    content: '';
+                    width: 100%;
+                    height: 2px;
+                    background: $green-cl;
+                    position: absolute;
+                    bottom: 45px;
+                    left: 0;
+                    @include transform(scale(0));
+                    @include transition($t $cubic);
+                }
+                &:hover,
+                &.active {
+                    &:after {
+                        background-color: $green-cl;
+                        @include transform(scale(1));
+                        @include transition($t $cubic);
+                    }
+                }
+            }
+        }
+    }
+
+    .btnmenu {
+        display: none;
+        width: 40px;
+        height: 22px;
+        position: relative;
+        cursor: pointer;
+        z-index: 300;
+        span {
+            width: 100%;
+            height: 2px;
+            display: block;
+            background: #fff;
+            position: absolute;
+            top: 50%;
+            @include transform(translateY(-50%));
+            @include transition($t);
+            &:before, 
+            &:after {
+                content: '';
+                width: 100%;
+                height: 2px;
+                display: block;
+                background: #fff;
+                @include transform(rotate(0deg) translateY(0px));
+                @include transition($t);
+            }
+            &:before {
+                position: absolute;
+                top: 10px;
+            }
+            &:after {
+                position: absolute;
+                bottom: 10px;
+            }    
+        }
+        &:hover {
+            span, span:before, span:after {
+                background: $green-cl;
+                @include transition($t);
+            }
+        }   
+        &.clicked {
+            span {
+                @include transform(rotate(-45deg));
+                &:before,
+                &:after {
+                    position: absolute;
+                    top: 50%;
+                    @include transform(translateY(-50%));
+                    @include transition($t);
+                }
+                &:before {
+                    @include transform(rotate(90deg));
+                    @include transition($t);
+
+                }
+                &:after {
+                    @include transform(rotate(90deg));
+                    @include transition($t);
+                }
+            }
+            
+        }
+    }
+    
+    @include sm {
+        .container {
+            margin-top: initial;
+        }
+        .menu {
+            display: none;
+        }
+        .btnmenu {
+            display: block;
+            height: 100%;
+            position: absolute;
+            left: 50%;
+            @include transform(translateX(-50%));
+        }
+    }
+}
